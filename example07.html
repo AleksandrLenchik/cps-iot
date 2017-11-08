@@ -1,0 +1,27 @@
+<!doctype html>
+<meta charset = utf8>
+<!DOCTYPE html>
+<html>
+    
+<head>
+    <title>Example with HW buttons</title>
+</head>
+    
+<body>
+    
+    <div id="print1"></div>
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript">
+    "use strict"; // in order to use classes
+    var divElement = document.getElementById("print1"); // var for div el.
+    function log(msg){
+        divElement.innerHTML += "<div>" + msg + "</div>"; // print to div
+    }
+    var socket = io.connect("172.16.22.169:8080"); // connect via socket
+    socket.on("messageToClient", function (msg) {
+        log(msg); // adding message to div
+    });
+            
+    </script>
+    </body>
+</html>
