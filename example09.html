@@ -1,0 +1,45 @@
+<!doctype html>
+<meta charcset = utf8>
+<html>
+<head>
+    <title>Example with HW buttons</title>
+</head>
+
+<body>
+
+
+<div id="print1"> </div>
+
+
+
+
+<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+<script type="text/javascript">
+"use strict";// in odrer to use classes
+var divElement = document.getElementById("print1"); //var for div el.
+var numberOfLinesBeforeScroll = 20;
+var linesPrintCounter = 0;
+  
+  function log(msg) {
+    var node=document.createElement("tr"); // we create new row
+    var textnode=document.createTextNode(linesPrintCounter + " | " + msg); // we create element with the text adding the counter
+    node.appendChild(textnode); // adding text to "node"
+    divElement.insertBefore(node, divElement.childNodes[0]); // inserting into variable node
+    if (linesPrintCounter > numberOfLinesBeforeScroll-1) { // if the lines are more than limit -> start with scroll
+        divElement.removeChild(divElement.childNodes[numberOfLinesBeforeScroll]); // we remove the oldest printout
+    }
+    linesPrintCounter++; // increasing the number of printouts
+}
+var socket = io.connect("172.16.22.138:8080"); //connect via socket
+socket.on("messageToClient", function(msg) { // when we receive the message
+   log(msg); // adding message to div
+});
+    
+</script>
+
+
+
+</body>
+
+
+</html>
