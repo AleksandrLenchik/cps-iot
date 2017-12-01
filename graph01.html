@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<!-- Andrej Škraba  2017 -->
+
+<html>
+<head>
+<title>Example with graph</title>    
+</head>
+    
+<body>
+Example with graph
+<br>
+<canvas id="canvas1" width="200" height="100" style="border:1px dashed #00c3c3"></canvas>
+
+<script type="text/javascript">
+"use strict"; // enable classes
+    
+var canvas, ctx; // create two variables for canvas and context (ctx)
+
+canvas = document.getElementById("canvas1");
+ctx = canvas.getContext("2d");
+ctx.strokeStyle = "#ff0000"; // determine red color of the graph
+
+ctx.beginPath(); // start drawing line
+ctx.lineTo(0, 70); // first point on canvas
+ctx.lineTo(50, 80);
+ctx.lineTo(100, 40);
+ctx.lineTo(150, 60);
+ctx.lineTo(200, 10);
+ctx.stroke(); // in order to show it on the canvas
+    
+</script>
+
+</body>    
+    
+</html>
